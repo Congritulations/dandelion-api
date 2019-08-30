@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.pugongyingapi.mapper.LogMapper">
+
+    <insert id="saveLog" parameterType="com.zt.pugongyingapi.model.Log">
+        insert into id,user_id,type,remote_ip,content,create_time,remark
+        values (#{id},#{userId},#{type},#{remoteIp},#{content},#{createTime},#{remark})
+    </insert>
+
+</mapper>

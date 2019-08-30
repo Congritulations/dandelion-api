@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.pugongyingapi.mapper.UserMapper">
+
+    <sql id="base_list">
+        id,username,phone,picture,nickname,openId,state,create_time,remark
+    </sql>
+
+    <select id="getUserInfo" parameterType="com.zt.pugongyingapi.common.param.user.UserParam" resultType="com.zt.pugongyingapi.common.result.user.UserResult">
+        select 
+        <include refid="base_list"/>
+        from z_t_user where phone=#{phone}
+    </select>
+    
+    <insert id="save" parameterType="com.zt.pugongyingapi.common.result.user.UserResult">
+        insert into z_t_user set phone=#{phone},create_time=#{createTime}
+    </insert>
+
+    <select id="hasCrad" parameterType="com.zt.pugongyingapi.common.result.user.UserResult" resultType="java.lang.Integer">
+        SELECT COUNT(*) from z_t_user_card WHERE state=1 and end_time<now() and user_id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.pugongyingapi.mapper.CardMapper">
+
+    <sql id="card_info">
+        id,card_num,card_pass,card_type,organ_id,card_state,card_price,remark
+    </sql>
+
+    <insert id="bindCard" parameterType="com.zt.pugongyingapi.common.param.card.CardParam">
+        insert into id,user_id,card_id,create_time,end_time
+        values (#{id},#{userId},#{cardId},#{createTime},#{endTime})
+    </insert>
+
+    <select id="getCardInfo" parameterType="com.zt.pugongyingapi.common.param.card.CardParam" resultType="com.zt.pugongyingapi.model.ZTCard">
+        select
+        <include refid="card_info"/>
+        from z_t_card
+        where card_num=#{cardNum} and card_pass=#{cardPass} and card_state=0
+    </select>
+
+</mapper>
